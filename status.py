@@ -30,15 +30,15 @@ serverPort = 7828 # Port for "STAT" status server
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
-        self.send_header("Content-type", "text/html")
+        self.send_header("Content-type", "text/plain")
         self.end_headers()
         
         # Shell scripts for system monitoring from here:
         # https://unix.stackexchange.com/questions/119126/command-to-display-memory-usage-disk-usage-and-cpu-load
         cmd = "hostname -I | cut -d\' \' -f1"
         IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
-        IP = "IP: " + IP.strip()
-        self.wfile.write(bytes(IP+"\n", "utf-8")) #IP comes with free \n...
+        IP = "IP: " + IP.strip() #IP comes with free \n so we remove it
+        self.wfile.write(bytes(IP+"\n", "utf-8")) 
         
         cmd = "top -bn1 | grep load | awk '{printf \"CPU Load: %.2f\", $(NF-2)}'"
         CPU = subprocess.check_output(cmd, shell=True).decode("utf-8")
