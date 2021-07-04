@@ -48,7 +48,7 @@ class MyServer(BaseHTTPRequestHandler):
         MemUsage = subprocess.check_output(cmd, shell=True).decode("utf-8")
         self.wfile.write(bytes(MemUsage+"\n", "utf-8"))
         
-        cmd = "df -h | awk '$NF==\"/\"{printf \"Disk: %d/%d GB  %s\", $3,$2,$5}'"
+        cmd = "df -BG | awk '$NF==\"/\"{printf \"Disk: %d/%d GB  %s\", $3,$2,$5}'"
         Disk = subprocess.check_output(cmd, shell=True).decode("utf-8")
         self.wfile.write(bytes(Disk+"\n", "utf-8"))
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
     cmd = "hostname -I | cut -d\' \' -f1"
     IP = subprocess.check_output(cmd, shell=True).decode("utf-8")
-    IP = "IP: " + IP.strip()
+    IP = IP.strip()
     print("Server started http://%s:%s" % (IP, serverPort))
 
     try:
