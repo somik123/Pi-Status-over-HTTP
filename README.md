@@ -1,5 +1,7 @@
 # Pi-Status-over-HTTP
-Single python script to output raspberry pi status over http
+Single python script to output raspberry pi status over http. The python script acts as both the http server and status page.
+
+Memory consumption of about 4 MB while running the HTTP server.
 
 Just place the file in your /home/pi/ directory open it in any note editor and add it to boot by following the instructions at the top of the python file.
 
