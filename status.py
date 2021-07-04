@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
 
+# --- README ---
 #
 # To start at boot, you can either setup a cron tab as following:
-# @reboot python3 /home/pi/status.py &
+# Edit crontabs by running the command: 
+#     crontab -e
+# And add to file:
+#     @reboot python3 /home/pi/status.py &
 #
 # Or set it up in /etc/rc.local [before] the "exit 0" line as following:
-# python3 /home/pi/status.py &
+# Edit rc.local file by running the command: 
+#     sudo nano /etc/rc.local
+# And add to file:
+#     python3 /home/pi/status.py &
 #
 # Do note that you do not need to run it as sudo
 #
@@ -18,7 +25,7 @@ import subprocess
 
 
 hostName = "" # Any hostname
-serverPort = 8081 # Port for "STAT" status server
+serverPort = 7828 # Port for "STAT" status server
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
