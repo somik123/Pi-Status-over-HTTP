@@ -18,7 +18,7 @@ import subprocess
 
 
 hostName = "" # Any hostname
-serverPort = 7828 # Port for "STAT" status server
+serverPort = 8081 # Port for "STAT" status server
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
