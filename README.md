@@ -6,6 +6,9 @@ Memory consumption of about 4 MB while running the HTTP server.
 Just place the file in your /home/pi/ directory open it in any note editor and add it to boot by following the instructions at the top of the python file.
 
 
+By default, it'll run on port 7828. So if your raspberry pi IP address is 192.168.1.232 you can see the status if you access  http://192.168.1.232:7828
+
+
 Extract from the file:
 
 ```
